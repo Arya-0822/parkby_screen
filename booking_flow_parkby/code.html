@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ParkBy - Booking Flow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#131b2e",
+                      "on-tertiary-fixed": "#3f0300",
+                      "primary-container": "#21a385",
+                      "background": "#0b1326",
+                      "error": "#ffb4ab",
+                      "on-tertiary-fixed-variant": "#7c2d20",
+                      "on-primary-fixed": "#002018",
+                      "surface": "#0b1326",
+                      "on-primary": "#00382c",
+                      "on-surface-variant": "#bccac3",
+                      "surface-container-high": "#222a3d",
+                      "secondary-fixed-dim": "#c0c1ff",
+                      "warning-amber": "#F59E0B",
+                      "on-background": "#dae2fd",
+                      "on-secondary-container": "#b0b2ff",
+                      "surface-container-lowest": "#060e20",
+                      "error-container": "#93000a",
+                      "on-secondary": "#1000a9",
+                      "on-secondary-fixed-variant": "#2f2ebe",
+                      "on-secondary-fixed": "#07006c",
+                      "surface-bright": "#31394d",
+                      "tertiary-fixed-dim": "#ffb4a6",
+                      "inverse-on-surface": "#283044",
+                      "inverse-primary": "#006b56",
+                      "on-surface": "#dae2fd",
+                      "on-tertiary": "#5e170c",
+                      "signature-gradient": "linear-gradient(90deg, #A855F7 0%, #EC4899 33%, #F97316 66%, #EAB308 100%)",
+                      "outline": "#86948e",
+                      "secondary": "#c0c1ff",
+                      "surface-container": "#171f33",
+                      "surface-dim": "#0b1326",
+                      "tertiary-fixed": "#ffdad4",
+                      "surface-variant": "#2d3449",
+                      "on-error-container": "#ffdad6",
+                      "secondary-container": "#3131c0",
+                      "outline-variant": "#3d4945",
+                      "map-void": "#020617",
+                      "on-primary-fixed-variant": "#005140",
+                      "surface-tint": "#66daba",
+                      "primary-fixed-dim": "#66daba",
+                      "tertiary": "#ffb4a6",
+                      "primary-fixed": "#84f7d5",
+                      "on-primary-container": "#003025",
+                      "surface-container-highest": "#2d3449",
+                      "glass-border": "rgba(255, 255, 255, 0.12)",
+                      "inverse-surface": "#dae2fd",
+                      "on-tertiary-container": "#541006",
+                      "secondary-fixed": "#e1e0ff",
+                      "on-error": "#690005",
+                      "tertiary-container": "#d97462",
+                      "primary": "#66daba"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target": "44px",
+                      "unit": "8px",
+                      "gutter": "16px",
+                      "container-margin": "24px"
+              },
+              "fontFamily": {
+                      "headline-xl": [
+                              "Space Grotesk"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "data-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg": [
+                              "Space Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "data-lg": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "headline-xl": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid theme('colors.glass-border');
+        }
+
+        .glass-input {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .glass-input:focus {
+            outline: none;
+            border-color: theme('colors.primary');
+            box-shadow: 0 0 0 2px rgba(102, 218, 186, 0.2);
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #0F9B7E 0%, #15B896 100%);
+            box-shadow: 0 8px 16px -4px rgba(15, 155, 126, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .gradient-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -4px rgba(15, 155, 126, 0.5);
+        }
+
+        .step-active .step-icon {
+            background: theme('colors.primary');
+            color: theme('colors.on-primary');
+            border-color: theme('colors.primary');
+        }
+
+        .step-completed .step-icon {
+            background: theme('colors.surface-container-high');
+            color: theme('colors.primary');
+            border-color: theme('colors.primary');
+        }
+
+        .step-inactive .step-icon {
+            background: transparent;
+            color: theme('colors.on-surface-variant');
+            border-color: theme('colors.outline');
+        }
+
+        .step-line {
+            height: 2px;
+            background: theme('colors.outline-variant');
+        }
+
+        .step-line-active {
+            background: theme('colors.primary');
+        }
+        
+        .map-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative">
+<div class="map-bg" data-alt="A highly detailed, dark-mode satellite view of a futuristic urban grid at night, rendered in a high-tech mapping style. Neon cyan and deep blue accents trace main arterial roads. The image is mostly dark, abstract, and heavily vignetted to serve as a subtle background texture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZhi2Vo8xiKUVzQHzuFWBEwGanBn4J-y54MaX_KM-JXwZuUU4zbI277XlUbiPgS3x4V_VHYe_WchcpyTJAKiRmlGvg34tSc6CbdGp9zdkidLkkP1tqsAXQlQeqULa2wLuAKzubOeKnZTmq2hAeIPqgHIK5P_1ckpFQCXtSCHiONBcpZ3AibaVyZ902LGzeStbl4wSS50oKBaq1Sd6ELDRc90hPyM-DbIM3HktSrSm0Obf-qnYUxeBv6g')"></div>
+<!-- TopAppBar -->
+<nav class="sticky top-4 z-50 flex items-center justify-between w-full px-container-margin bg-surface/70 backdrop-blur-xl rounded-full mt-4 mx-auto max-w-7xl px-6 py-3 border border-glass-border shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)]">
+<div class="font-headline-lg text-headline-lg font-bold text-primary">ParkBy</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300 font-label-caps text-label-caps" href="#">List Property</a>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300 font-label-caps text-label-caps" href="#">Explore Platform</a>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300 font-label-caps text-label-caps" href="#">About Us</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<a class="hidden md:block text-on-surface-variant hover:text-primary transition-all duration-300 font-label-caps text-label-caps" href="#">Login</a>
+<a class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-caps text-label-caps hover:bg-primary-fixed transition-colors" href="#">Sign Up</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow max-w-7xl mx-auto w-full px-container-margin pt-12 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Booking Flow Canvas -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Stepper -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex items-center justify-between relative">
+<!-- Step 1: Details (Completed) -->
+<div class="flex flex-col items-center gap-2 relative z-10 step-completed w-1/4">
+<div class="w-8 h-8 rounded-full border-2 flex items-center justify-center step-icon">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary">Details</span>
+</div>
+<!-- Step 2: Vehicle (Active) -->
+<div class="flex flex-col items-center gap-2 relative z-10 step-active w-1/4">
+<div class="w-8 h-8 rounded-full border-2 flex items-center justify-center step-icon font-data-sm">
+                            2
+                        </div>
+<span class="font-label-caps text-label-caps text-primary">Vehicle</span>
+</div>
+<!-- Step 3: Payment (Inactive) -->
+<div class="flex flex-col items-center gap-2 relative z-10 step-inactive w-1/4">
+<div class="w-8 h-8 rounded-full border-2 flex items-center justify-center step-icon font-data-sm">
+                            3
+                        </div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Payment</span>
+</div>
+<!-- Step 4: Confirm (Inactive) -->
+<div class="flex flex-col items-center gap-2 relative z-10 step-inactive w-1/4">
+<div class="w-8 h-8 rounded-full border-2 flex items-center justify-center step-icon font-data-sm">
+                            4
+                        </div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Confirm</span>
+</div>
+<!-- Connecting Lines -->
+<div class="absolute top-4 left-[12.5%] right-[12.5%] step-line -z-0">
+<div class="h-full step-line-active" style="width: 33%;"></div>
+</div>
+</div>
+</div>
+<!-- Current Step Panel (Vehicle) -->
+<div class="glass-panel rounded-xl p-8">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Vehicle Details</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Enter the license plate of the vehicle you will be parking.</p>
+<div class="space-y-6">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">License Plate Number</label>
+<input class="w-full glass-input rounded-lg px-4 py-4 font-data-lg text-data-lg text-white uppercase placeholder-on-surface-variant/50" placeholder="XYZ 1234" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">State / Region (Optional)</label>
+<select class="w-full glass-input rounded-lg px-4 py-3 font-body-md text-body-md text-white appearance-none">
+<option disabled="" selected="" value="">Select state</option>
+<option value="CA">California</option>
+<option value="NY">New York</option>
+<option value="TX">Texas</option>
+</select>
+</div>
+<div class="pt-4 flex items-center gap-3">
+<input class="w-5 h-5 rounded border-outline-variant bg-surface-container-high text-primary focus:ring-primary focus:ring-offset-background" id="save-vehicle" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface-variant" for="save-vehicle">Save this vehicle for future bookings</label>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="gradient-btn text-white px-8 py-3 rounded-full font-label-caps text-label-caps flex items-center gap-2">
+                        Continue to Payment
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sidebar Summary -->
+<div class="lg:col-span-4">
+<div class="glass-panel rounded-xl p-6 sticky top-28">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-6">Order Summary</h2>
+<div class="space-y-4 mb-6">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">Location</div>
+<div class="font-body-md text-body-md text-on-surface">Premium Spot A-12</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">123 Tech Blvd, San Francisco</div>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">Time Window</div>
+<div class="font-data-sm text-data-sm text-on-surface">Oct 24, 14:00 - 18:00</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">4 Hours</div>
+</div>
+</div>
+</div>
+<div class="border-t border-glass-border pt-4 mb-6 space-y-2">
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Parking Fee</span>
+<span class="font-data-sm text-data-sm">$12.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Service Fee</span>
+<span class="font-data-sm text-data-sm">$1.50</span>
+</div>
+</div>
+<div class="border-t border-glass-border pt-4 flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface">Total Due</span>
+<span class="font-data-lg text-data-lg text-primary">$13.50</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-surface-container-lowest border-t border-glass-border grid grid-cols-1 md:grid-cols-4 gap-8 px-container-margin max-w-7xl mx-auto mt-auto">
+<div>
+<div class="font-headline-lg text-headline-lg text-primary mb-4">ParkBy</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 ParkBy Technologies. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:translate-x-1 font-body-sm text-body-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:translate-x-1 font-body-sm text-body-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:translate-x-1 font-body-sm text-body-sm" href="#">Help Center</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 hover:translate-x-1 font-body-sm text-body-sm" href="#">Contact Support</a>
+</div>
+</footer>
+</body></html>

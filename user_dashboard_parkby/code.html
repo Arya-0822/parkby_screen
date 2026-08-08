@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ParkBy - My Bookings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed": "#3f0300",
+                        "primary-container": "#21a385",
+                        "background": "#0b1326",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#7c2d20",
+                        "on-primary-fixed": "#002018",
+                        "surface": "#0b1326",
+                        "on-primary": "#00382c",
+                        "on-surface-variant": "#bccac3",
+                        "surface-container-high": "#222a3d",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "warning-amber": "#F59E0B",
+                        "on-background": "#dae2fd",
+                        "on-secondary-container": "#b0b2ff",
+                        "surface-container-lowest": "#060e20",
+                        "error-container": "#93000a",
+                        "on-secondary": "#1000a9",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed": "#07006c",
+                        "surface-bright": "#31394d",
+                        "tertiary-fixed-dim": "#ffb4a6",
+                        "inverse-on-surface": "#283044",
+                        "inverse-primary": "#006b56",
+                        "on-surface": "#dae2fd",
+                        "on-tertiary": "#5e170c",
+                        "signature-gradient": "linear-gradient(90deg, #A855F7 0%, #EC4899 33%, #F97316 66%, #EAB308 100%)",
+                        "outline": "#86948e",
+                        "secondary": "#c0c1ff",
+                        "surface-container": "#171f33",
+                        "surface-dim": "#0b1326",
+                        "tertiary-fixed": "#ffdad4",
+                        "surface-variant": "#2d3449",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#3131c0",
+                        "outline-variant": "#3d4945",
+                        "map-void": "#020617",
+                        "on-primary-fixed-variant": "#005140",
+                        "surface-tint": "#66daba",
+                        "primary-fixed-dim": "#66daba",
+                        "tertiary": "#ffb4a6",
+                        "primary-fixed": "#84f7d5",
+                        "on-primary-container": "#003025",
+                        "surface-container-highest": "#2d3449",
+                        "glass-border": "rgba(255, 255, 255, 0.12)",
+                        "inverse-surface": "#dae2fd",
+                        "on-tertiary-container": "#541006",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-error": "#690005",
+                        "tertiary-container": "#d97462",
+                        "primary": "#66daba"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target": "44px",
+                        "unit": "8px",
+                        "gutter": "16px",
+                        "container-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Space Grotesk", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "data-sm": ["JetBrains Mono", "monospace"],
+                        "headline-lg": ["Space Grotesk", "sans-serif"],
+                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "data-lg": ["JetBrains Mono", "monospace"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "data-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "data-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid theme('colors.glass-border');
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .glow-shadow {
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5);
+        }
+        .map-bg {
+            background-image: radial-gradient(circle at center, rgba(33, 163, 133, 0.05) 0%, rgba(11, 19, 38, 1) 70%);
+        }
+        /* Hide scrollbar for carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col map-bg relative overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="sticky top-4 z-50 flex items-center justify-between w-full px-container-margin bg-surface/70 backdrop-blur-xl border border-glass-border shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] rounded-full mt-4 mx-auto max-w-7xl px-6 py-3">
+<div class="flex items-center gap-gutter">
+<a class="font-headline-lg text-headline-lg font-bold text-primary" href="#">ParkBy</a>
+<div class="hidden md:flex gap-gutter items-center ml-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300" href="#">List Property</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Explore Platform</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300" href="#">About Us</a>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<!-- Search on Right (Implicitly hidden here to focus on dashboard actions, but keeping layout slot) -->
+<div class="hidden lg:flex items-center gap-unit text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</div>
+<div class="flex items-center gap-unit ml-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-variant transition-colors text-on-surface">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-variant transition-colors text-primary border border-primary">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<div class="hidden md:flex gap-unit ml-4">
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 px-4 py-2">Login</button>
+<button class="font-label-caps text-label-caps bg-primary text-on-primary rounded-full px-6 py-2 hover:opacity-90 transition-opacity">Sign Up</button>
+</div>
+</div>
+</nav>
+<!-- Main Layout -->
+<div class="flex-grow max-w-7xl mx-auto w-full px-container-margin pt-8 pb-16 flex flex-col md:flex-row gap-8 mt-8">
+<!-- Left Sidebar Navigation -->
+<aside class="w-full md:w-64 flex-shrink-0">
+<div class="glass-panel rounded-xl p-6 sticky top-32 flex flex-col gap-2">
+<div class="mb-6 px-4">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Dashboard</h2>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border border-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md font-medium">My Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-body-md text-body-md">Saved Spots</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="font-body-md text-body-md">Payment Methods</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 transition-colors mt-4" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col gap-8 min-w-0">
+<!-- Page Header & Stats -->
+<div class="flex flex-col gap-6">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">My Bookings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Manage your upcoming reservations and view past history.</p>
+</div>
+<!-- Stat Strip -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="glass-panel rounded-lg p-4 flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Total Spent (YTD)</span>
+<span class="font-data-lg text-data-lg text-primary">$432.50</span>
+</div>
+<div class="glass-panel rounded-lg p-4 flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Hours Parked</span>
+<span class="font-data-lg text-data-lg text-on-surface">128h</span>
+</div>
+<div class="glass-panel rounded-lg p-4 flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Active Bookings</span>
+<span class="font-data-lg text-data-lg text-warning-amber">1</span>
+</div>
+<div class="glass-panel rounded-lg p-4 flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Saved Spots</span>
+<span class="font-data-lg text-data-lg text-on-surface">4</span>
+</div>
+</div>
+</div>
+<!-- Upcoming Bookings Carousel -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Upcoming</h2>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-container-margin px-container-margin md:mx-0 md:px-0">
+<!-- Ticket Card 1 (Active) -->
+<div class="w-80 flex-shrink-0 glass-card rounded-xl overflow-hidden flex flex-col relative border-primary/30">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="p-5 flex flex-col gap-4 border-b border-glass-border border-dashed">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-2 py-1 rounded">ACTIVE NOW</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-2">Downtown Metro Garage</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">local_parking</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">Check-in</span>
+<span class="font-data-sm text-data-sm text-on-surface block">10:00 AM</span>
+<span class="font-data-sm text-data-sm text-on-surface-variant">Today</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">Check-out</span>
+<span class="font-data-sm text-data-sm text-on-surface block">04:00 PM</span>
+<span class="font-data-sm text-data-sm text-on-surface-variant">Today</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-high/30 flex justify-between items-center">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">Spot</span>
+<span class="font-data-lg text-data-lg text-primary">B-42</span>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant block">Total</span>
+<span class="font-data-lg text-data-lg text-on-surface">$24.00</span>
+</div>
+</div>
+<div class="p-4 pt-0">
+<button class="w-full bg-surface-variant text-on-surface font-label-caps text-label-caps py-3 rounded-lg hover:bg-surface-bright transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-sm">directions</span> Get Directions
+                             </button>
+</div>
+</div>
+<!-- Ticket Card 2 (Upcoming) -->
+<div class="w-80 flex-shrink-0 glass-card rounded-xl overflow-hidden flex flex-col relative">
+<div class="p-5 flex flex-col gap-4 border-b border-glass-border border-dashed">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-variant/50 px-2 py-1 rounded">UPCOMING</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-2">Stadium Lot C</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">event_seat</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">Check-in</span>
+<span class="font-data-sm text-data-sm text-on-surface block">06:30 PM</span>
+<span class="font-data-sm text-data-sm text-on-surface-variant">Oct 15</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">Check-out</span>
+<span class="font-data-sm text-data-sm text-on-surface block">11:30 PM</span>
+<span class="font-data-sm text-data-sm text-on-surface-variant">Oct 15</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-high/30 flex justify-between items-center">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant block">Spot</span>
+<span class="font-data-lg text-data-lg text-on-surface">G-12</span>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant block">Total</span>
+<span class="font-data-lg text-data-lg text-on-surface">$45.00</span>
+</div>
+</div>
+<div class="p-4 pt-0">
+<button class="w-full bg-surface-variant text-on-surface font-label-caps text-label-caps py-3 rounded-lg hover:bg-surface-bright transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span> View Details
+                             </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Past Bookings Table -->
+<section class="flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">History</h2>
+<div class="glass-panel rounded-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-glass-border bg-surface-container-high/50">
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant">Location</th>
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant">Date &amp; Time</th>
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant">Status</th>
+<th class="p-4 font-label-caps text-label-caps text-on-surface-variant text-right">Amount</th>
+<th class="p-4"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-glass-border">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-primary">local_parking</span>
+</div>
+<span class="font-body-md text-body-md font-medium text-on-surface">Airport Terminal 1 Long Term</span>
+</div>
+</td>
+<td class="p-4">
+<span class="font-data-sm text-data-sm text-on-surface block">Sep 28 - Oct 02</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">96 Hours</span>
+</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
+<span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+<span class="font-label-caps text-[10px] text-primary">COMPLETED</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<span class="font-data-sm text-data-sm text-on-surface">$120.00</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-primary hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">location_city</span>
+</div>
+<span class="font-body-md text-body-md font-medium text-on-surface">City Center Plaza</span>
+</div>
+</td>
+<td class="p-4">
+<span class="font-data-sm text-data-sm text-on-surface block">Sep 15</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">14:00 - 18:00</span>
+</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
+<span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+<span class="font-label-caps text-[10px] text-primary">COMPLETED</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<span class="font-data-sm text-data-sm text-on-surface">$18.50</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-primary hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-variant/30 transition-colors opacity-75">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">storefront</span>
+</div>
+<span class="font-body-md text-body-md font-medium text-on-surface line-through text-on-surface-variant">Main St. Alley</span>
+</div>
+</td>
+<td class="p-4">
+<span class="font-data-sm text-data-sm text-on-surface-variant block">Aug 22</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">09:00 - 11:00</span>
+</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error/10 border border-error/20">
+<span class="material-symbols-outlined text-[14px] text-error">cancel</span>
+<span class="font-label-caps text-[10px] text-error">CANCELLED</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<span class="font-data-sm text-data-sm text-on-surface-variant">$0.00</span>
+</td>
+<td class="p-4 text-right">
+<!-- No receipt for cancelled -->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-glass-border flex justify-center">
+<button class="font-label-caps text-label-caps text-primary hover:text-primary-fixed transition-colors">Load More</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-surface-container-lowest border-t border-glass-border grid grid-cols-1 md:grid-cols-4 gap-8 px-container-margin max-w-7xl mx-auto mt-auto">
+<div class="col-span-1 md:col-span-1 flex flex-col justify-between h-full">
+<span class="font-headline-lg text-headline-lg text-primary">ParkBy</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-4 md:mt-0">© 2024 ParkBy Technologies. All rights reserved.</span>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-col md:flex-row gap-8 justify-end">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200 hover:translate-x-1" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200 hover:translate-x-1" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200 hover:translate-x-1" href="#">Help Center</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200 hover:translate-x-1" href="#">Contact Support</a>
+</div>
+</footer>
+</body></html>
